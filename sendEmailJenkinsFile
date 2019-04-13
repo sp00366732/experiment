@@ -14,7 +14,7 @@ pipeline {
 
   post {
     always{
-        jobName = ${JOB_NAME}
+        def jobName = ${JOB_NAME}
         println jobName
         sendStatusEmail audience: customNotification.sendEmail(jobName), changeLogSets: currentBuild.changeSets, buildStatus: currentBuild.currentResult
     }
