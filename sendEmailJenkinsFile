@@ -1,0 +1,22 @@
+@Library('SMA-DevOps-Jenskins-Library') _
+
+pipeline {
+  agent any
+  
+  stages {
+    stage('Initialize') {
+      steps {
+//        checkout scm
+        sh "java -version"
+        }
+      }
+    }
+
+  post {
+    always{
+        jobName = ${JOB_NAME}
+        println jobName
+        sendStatusEmail audience: customNotification.sendEmail(jobName), changeLogSets: currentBuild.changeSets, buildStatus: currentBuild.currentResult
+    }
+  }
+}
