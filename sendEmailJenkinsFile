@@ -17,7 +17,7 @@ pipeline {
         //def jobName = ${JOB_NAME}
         println $JOB_NAME
         //sendStatusEmail audience: customNotification.sendEmail(jobName), changeLogSets: currentBuild.changeSets, buildStatus: currentBuild.currentResult
-        sendStatusEmail audience: sanjay-p@hcl.com, changeLogSets: currentBuild.changeSets, buildStatus: currentBuild.currentResult
+        sendStatusEmail audience: "sanjay-p@hcl.com", changeLogSets: currentBuild.changeSets, buildStatus: currentBuild.currentResult
     }
   }
 }
